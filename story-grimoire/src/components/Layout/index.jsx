@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <main className="h-screen">{children}</main>
+      <main className="md:h-screen">{children}</main>
       {/* <footer
         style={{
           marginTop: `2rem`,
