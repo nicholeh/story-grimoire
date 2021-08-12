@@ -23,19 +23,10 @@ const Layout = ({ children }) => {
     `)
 
     return (
-        <>
-            <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-            <main className="md:h-screen">{children}</main>
-            {/* <footer
-        style={{
-          marginTop: `2rem`,
-        }}
-      >
-        © {new Date().getFullYear()}, Built with
-          {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer> */}
-        </>
+        <div className="md:flex">
+            <Header siteTitle={data.site.siteMetadata?.title || `Title`} className="md:w-40 md:h-screen" />
+            <main className="shadow md:h-screen">{children}</main>
+        </div>
     )
 }
 

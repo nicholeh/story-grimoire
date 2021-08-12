@@ -40,7 +40,7 @@ export const query = graphql`
                 storyName
                 typeOfStory
                 wordCountGoal
-                projectDescription
+                storyDescription
             }
         }
     }
