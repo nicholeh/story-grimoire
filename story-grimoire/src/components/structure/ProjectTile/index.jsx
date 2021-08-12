@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 const ProjectTile = ({ content }) => (
     <div className="flex p-4 bg-white rounded-xl">
         <div className="mt-4">
-            <p className="font-mono text-xs">
+            <p className="sg-body-2">
                 {content.typeOfStory} / {content.wordCountGoal}
             </p>
-            <h3 className="text-lg font-bold">{content.storyName}</h3>
-            {/* <p className="mt-2 text-sm">{content.projectDescription}</p> */}
+            <h3 className="sg-title-2">{content.storyName}</h3>
+            {/* <p className="mt-2 sg-body-2">{content.projectDescription}</p> */}
         </div>
     </div>
 )

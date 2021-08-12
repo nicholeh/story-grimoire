@@ -24,8 +24,11 @@ const Layout = ({ children }) => {
 
     return (
         <div className="md:flex">
-            <Header siteTitle={data.site.siteMetadata?.title || `Title`} className="md:w-40 md:h-screen" />
-            <main className="shadow md:h-screen">{children}</main>
+            <Header
+                siteTitle={data.site.siteMetadata?.title || `Title`}
+                className="md:w-40 md:h-screen"
+            />
+            <main className="shadow md:h-screen flex-1">{children}</main>
         </div>
     )
 }
