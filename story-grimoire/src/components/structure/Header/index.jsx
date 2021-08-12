@@ -1,25 +1,19 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import UniverseNav from './UniverseNav'
 
 const Header = ({ siteTitle, className }) => (
     <header
-        className={`flex md:flex-col justify-between md:justify-start items-center bg-white py-4 px-8 ${
+        className={`flex justify-between items-center bg-white py-4 px-8 shadow-sm ${
             className ? className : ''
         }`}
     >
-        <p className="mr-4 md:mt-16 md:mr-0">
-            <Link
-                to="/"
-                className="font-body font-extrabold text-2xl md:text-7xl lg:text-8xl"
-            >
-                S
-            </Link>
-        </p>
+        <Link to="/" className="sg-title-1">
+            grimoire
+        </Link>
 
-        <nav className="md:mt-16">
-            <Link to="/">Home</Link>
-        </nav>
+        <UniverseNav />
     </header>
 )
 

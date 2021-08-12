@@ -16,8 +16,8 @@ const IndexPage = ({ data }) => {
                     <div>
                         <h1 className="sg-display-3 pb-8">Projects</h1>
                         <Grid className="md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {stories.map(story => (
-                                <ProjectTile content={story} />
+                            {stories.map((story, index) => (
+                                <ProjectTile key={index} content={story} />
                             ))}
                         </Grid>
                     </div>

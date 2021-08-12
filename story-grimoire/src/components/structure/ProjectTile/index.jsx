@@ -17,7 +17,7 @@ ProjectTile.propTypes = {
     content: PropTypes.shape({
         storyName: PropTypes.string,
         typeOfStory: PropTypes.string,
-        wordCountGoal: PropTypes.string,
+        wordCountGoal: PropTypes.number,
         // projectDescription: PropTypes.string,
     }),
 }
