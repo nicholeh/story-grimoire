@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "N",
   "dependencies": {
+    "@fontsource/forum": "^4.5.0",
+    "@fontsource/work-sans": "^4.5.0",
     "dotenv": "^10.0.0",
     "gatsby": "^3.11.1",
     "gatsby-plugin-gatsby-cloud": "^2.11.0",
@@ -12,6 +14,7 @@
     "gatsby-plugin-manifest": "^3.11.0",
     "gatsby-plugin-offline": "^4.11.0",
     "gatsby-plugin-react-helmet": "^4.11.0",
+    "gatsby-plugin-sass": "^4.11.0",
     "gatsby-plugin-sharp": "^3.11.0",
     "gatsby-source-filesystem": "^3.11.0",
     "gatsby-source-graphql": "^3.11.0",
@@ -19,7 +22,8 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "sass": "^1.37.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",

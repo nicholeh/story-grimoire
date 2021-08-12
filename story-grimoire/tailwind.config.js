@@ -1,11 +1,11 @@
 module.exports = {
-    purge: ['./src/**/*.{js,jsx}'],
+    purge: ['./src/**/*.{js,jsx,ts,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
             fontFamily: {
-                'work-sans': ['Work Sans', 'sans-serif'],
-                bitter: ['Bitter', 'serif'],
+                display: ['Forum', 'serif'],
+                body: ['Work Sans', 'sans-serif'],
             },
         },
     },
