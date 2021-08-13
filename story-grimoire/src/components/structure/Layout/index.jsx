@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '../Header'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, currentPath }) => {
     const data = useStaticQuery(graphql`
         query SiteTitleQuery {
             site {
@@ -22,16 +22,12 @@ const Layout = ({ children }) => {
         }
     `)
 
-    // query UniverseNavigation {
-    //     universes {
-    //       universeName
-    //       universePageSlug
-    //     }
-    //   }
-
     return (
         <div>
-            <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+            <Header
+                siteTitle={data.site.siteMetadata?.title || `Title`}
+                currentPath={currentPath}
+            />
             <main className="pt-8">{children}</main>
         </div>
     )

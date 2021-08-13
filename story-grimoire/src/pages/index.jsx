@@ -7,7 +7,7 @@ import Layout from '../components/structure/Layout'
 import ProjectTile from '../components/structure/ProjectTile'
 
 const IndexPage = ({ data }) => {
-    const { stories } = data.grimoire
+    const { nodes } = data.allGraphCmsStory
     return (
         <Layout>
             <Seo title="Home" />
@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
                     <div>
                         <h1 className="sg-display-3 pb-8">Projects</h1>
                         <Grid className="md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {stories.map((story, index) => (
+                            {nodes.map((story, index) => (
                                 <ProjectTile key={index} content={story} />
                             ))}
                         </Grid>
@@ -29,12 +29,12 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
     query AllStories {
-        grimoire {
-            stories {
+        allGraphCmsStory {
+            nodes {
                 storyName
                 typeOfStory
-                wordCountGoal
                 storyDescription
+                wordCountGoal
             }
         }
     }

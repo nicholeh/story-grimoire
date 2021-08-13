@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import UniverseNav from './UniverseNav'
 
-const Header = ({ siteTitle, className }) => (
+const Header = ({ siteTitle, className, currentPath }) => (
     <header
         className={`flex justify-between items-center bg-white py-4 px-8 shadow-sm ${
             className ? className : ''
@@ -13,7 +13,7 @@ const Header = ({ siteTitle, className }) => (
             grimoire
         </Link>
 
-        <UniverseNav />
+        <UniverseNav currentPath={currentPath} />
     </header>
 )
 

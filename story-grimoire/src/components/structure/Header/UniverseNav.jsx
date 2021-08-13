@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 
-const UniverseNav = () => {
+const UniverseNav = ({ currentPath }) => {
     const data = useStaticQuery(graphql`
         query UniverseNavigation {
-            grimoire {
-                universes {
+            allGraphCmsUniverse {
+                nodes {
                     universeName
                     universePageSlug
                 }
@@ -13,13 +13,15 @@ const UniverseNav = () => {
         }
     `)
 
-    const { universes } = data.grimoire
+    const { nodes } = data.allGraphCmsUniverse
 
-    const [navValue, setNavValue] = useState('')
+    const [navValue, setNavValue] = useState(currentPath || '')
+
+    const createPath = slug => `/universe/${slug}`
 
     const handleChange = event => {
         setNavValue(event.target.value)
-        navigate(`/${event.target.value}`)
+        navigate(event.target.value)
     }
 
     return (
@@ -32,10 +34,10 @@ const UniverseNav = () => {
                 <option value="" disabled>
                     Select Universe
                 </option>
-                {universes.map(universe => (
+                {nodes.map(universe => (
                     <option
                         key={universe.universePageSlug}
-                        value={universe.universePageSlug}
+                        value={createPath(universe.universePageSlug)}
                     >
                         {universe.universeName}
                     </option>
