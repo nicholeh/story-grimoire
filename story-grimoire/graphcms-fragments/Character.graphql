@@ -1,0 +1,77 @@
+fragment Character on Character {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  characterName
+  age
+  birthdate
+  backgroundHistory {
+    ... on CharacterBackgroundHistoryRichText {
+      raw
+      json
+      html
+      markdown
+      text
+      references {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  story {
+    ... on Story {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  genderPronouns
+  speciess {
+    ... on Species {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  organizations {
+    ... on Organization {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  universe {
+    ... on Universe {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

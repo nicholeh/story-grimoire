@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
     siteMetadata: {
         title: `Story Grimoire`,
@@ -7,12 +9,11 @@ module.exports = {
     plugins: [
         `gatsby-plugin-react-helmet`,
         {
-            resolve: 'gatsby-source-graphql',
+            resolve: 'gatsby-source-graphcms',
             options: {
-                typeName: 'grimoire',
-                fieldName: 'grimoire',
-                url:
+                endpoint:
                     'https://api-us-east-1.graphcms.com/v2/cknni7yqbcm3u01ut6txycovv/master',
+                stages: ['PUBLISHED'],
             },
         },
         `gatsby-plugin-image`,

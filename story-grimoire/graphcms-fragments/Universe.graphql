@@ -1,0 +1,55 @@
+fragment Universe on Universe {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  universeName
+  universePageSlug
+  universeDescription
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  stories {
+    ... on Story {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  universeCategories {
+    ... on Character {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Organization {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Species {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}
