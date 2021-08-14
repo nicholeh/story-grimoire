@@ -24,26 +24,32 @@ const UniverseNav = ({ currentPath }) => {
         navigate(event.target.value)
     }
 
+    const menuItems = nodes.sort((a, b) =>
+        a.universeName.localeCompare(b.universeName)
+    )
+
     return (
-        <div>
-            <select
-                aria-label="Select a Universe to navigate"
-                value={navValue}
-                onChange={handleChange}
-            >
-                <option value="" disabled>
-                    Select Universe
-                </option>
-                {nodes.map(universe => (
-                    <option
-                        key={universe.universePageSlug}
-                        value={createPath(universe.universePageSlug)}
-                    >
-                        {universe.universeName}
+        <>
+            <div className="">
+                <select
+                    aria-label="Select a Universe to navigate"
+                    value={navValue}
+                    onChange={handleChange}
+                >
+                    <option value="" disabled>
+                        Select Universe
                     </option>
-                ))}
-            </select>
-        </div>
+                    {menuItems.map(universe => (
+                        <option
+                            key={universe.universePageSlug}
+                            value={createPath(universe.universePageSlug)}
+                        >
+                            {universe.universeName}
+                        </option>
+                    ))}
+                </select>
+            </div>
+        </>
     )
 }
 

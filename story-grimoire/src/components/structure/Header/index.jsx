@@ -5,7 +5,7 @@ import UniverseNav from './UniverseNav'
 
 const Header = ({ siteTitle, className, currentPath }) => (
     <header
-        className={`flex justify-between items-center bg-white py-4 px-8 shadow-sm ${
+        className={`flex justify-between items-center bg-white py-4 px-4 sm:px-8 shadow-sm ${
             className ? className : ''
         }`}
     >
