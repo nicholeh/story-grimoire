@@ -1,0 +1,57 @@
+fragment Story on Story {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  storyName
+  storyPageSlug
+  storyDescription
+  wordCountGoal
+  currentWordCount
+  storySetting
+  storyVibe
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  universe {
+    ... on Universe {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  characters {
+    ... on Character {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  dailyWordCounts {
+    ... on DailyWordCount {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  typeOfStory
+}

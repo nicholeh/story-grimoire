@@ -1,5 +1,5 @@
 .sg-display-1 {
-    @apply font-display text-7xl;
+    @apply font-display text-8xl;
 }
 
 .sg-display-2 {
@@ -32,4 +32,8 @@
 
 .sg-body-2 {
     @apply font-body text-sm;
+}
+
+.sg-metadata {
+    @apply font-body text-xs;
 }

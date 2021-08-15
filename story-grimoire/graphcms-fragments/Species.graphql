@@ -1,0 +1,44 @@
+fragment Species on Species {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  speciesName
+  description
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  characterSpecies {
+    ... on Character {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  universe {
+    ... on Universe {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}
