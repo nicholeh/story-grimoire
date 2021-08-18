@@ -4,9 +4,9 @@ fragment Universe on Universe {
   createdAt
   updatedAt
   publishedAt
-  universeName
-  universePageSlug
-  universeDescription
+  name
+  pageSlug
+  description
   createdBy {
     ... on User {
       remoteTypeName: __typename

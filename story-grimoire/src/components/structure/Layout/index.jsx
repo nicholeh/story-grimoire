@@ -28,7 +28,7 @@ const Layout = ({ children, currentPath }) => {
                 siteTitle={data.site.siteMetadata?.title || `Title`}
                 currentPath={currentPath}
             />
-            <main className="pt-8">{children}</main>
+            <main className="pt-18">{children}</main>
         </div>
     )
 }

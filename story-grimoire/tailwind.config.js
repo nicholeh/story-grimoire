@@ -7,6 +7,9 @@ module.exports = {
                 display: ['Forum', 'serif'],
                 body: ['Work Sans', 'sans-serif'],
             },
+            spacing: {
+                18: '4.5rem',
+            },
         },
     },
     variants: {
