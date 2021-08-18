@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { graphql, navigate, useStaticQuery } from 'gatsby'
+import pagePath from '../../../helpers/pagePaths'
 
 const UniverseNav = ({ currentPath }) => {
     const data = useStaticQuery(graphql`
         query UniverseNavigation {
             allGraphCmsUniverse {
                 nodes {
-                    universeName
-                    universePageSlug
+                    name
+                    pageSlug
                 }
             }
         }
@@ -17,16 +18,12 @@ const UniverseNav = ({ currentPath }) => {
 
     const [navValue, setNavValue] = useState(currentPath || '')
 
-    const createPath = slug => `/universe/${slug}`
-
     const handleChange = event => {
         setNavValue(event.target.value)
         navigate(event.target.value)
     }
 
-    const menuItems = nodes.sort((a, b) =>
-        a.universeName.localeCompare(b.universeName)
-    )
+    const menuItems = nodes.sort((a, b) => a.name.localeCompare(b.name))
 
     return (
         <>
@@ -41,10 +38,10 @@ const UniverseNav = ({ currentPath }) => {
                     </option>
                     {menuItems.map(universe => (
                         <option
-                            key={universe.universePageSlug}
-                            value={createPath(universe.universePageSlug)}
+                            key={universe.pageSlug}
+                            value={pagePath.universe(universe.pageSlug)}
                         >
-                            {universe.universeName}
+                            {universe.name}
                         </option>
                     ))}
                 </select>

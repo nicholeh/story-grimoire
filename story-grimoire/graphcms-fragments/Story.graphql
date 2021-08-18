@@ -4,9 +4,9 @@ fragment Story on Story {
   createdAt
   updatedAt
   publishedAt
-  storyName
-  storyPageSlug
-  storyDescription
+  title
+  pageSlug
+  description
   wordCountGoal
   currentWordCount
   storySetting
@@ -39,13 +39,6 @@ fragment Story on Story {
       stage
     }
   }
-  characters {
-    ... on Character {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   dailyWordCounts {
     ... on DailyWordCount {
       remoteTypeName: __typename
@@ -53,5 +46,14 @@ fragment Story on Story {
       stage
     }
   }
+  characters {
+    ... on Character {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   typeOfStory
+  storyVersion
+  workStatus
 }

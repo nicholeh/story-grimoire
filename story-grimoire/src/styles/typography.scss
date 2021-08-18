@@ -1,39 +1,41 @@
-.sg-display-1 {
-    @apply font-display text-8xl;
-}
+@responsive {
+    .sg-display-1 {
+        @apply font-display text-8xl;
+    }
 
-.sg-display-2 {
-    @apply font-display text-6xl;
-}
+    .sg-display-2 {
+        @apply font-display text-6xl;
+    }
 
-.sg-display-3 {
-    @apply font-display text-5xl;
-}
+    .sg-display-3 {
+        @apply font-display text-5xl;
+    }
 
-.sg-title-1 {
-    @apply font-display text-4xl;
-}
+    .sg-title-1 {
+        @apply font-display text-4xl;
+    }
 
-.sg-title-2 {
-    @apply font-body font-semibold text-2xl;
-}
+    .sg-title-2 {
+        @apply font-body font-semibold text-2xl;
+    }
 
-.sg-title-3 {
-    @apply font-body font-medium text-xl;
-}
+    .sg-title-3 {
+        @apply font-body font-medium text-xl;
+    }
 
-.sg-body-0 {
-    @apply font-body text-xl;
-}
+    .sg-body-0 {
+        @apply font-body text-xl;
+    }
 
-.sg-body-1 {
-    @apply font-body text-base;
-}
+    .sg-body-1 {
+        @apply font-body text-base;
+    }
 
-.sg-body-2 {
-    @apply font-body text-sm;
-}
+    .sg-body-2 {
+        @apply font-body text-sm;
+    }
 
-.sg-metadata {
-    @apply font-body text-xs;
+    .sg-metadata {
+        @apply font-body text-xs;
+    }
 }
