@@ -4,7 +4,7 @@ fragment Species on Species {
   createdAt
   updatedAt
   publishedAt
-  speciesName
+  name
   description
   createdBy {
     ... on User {
@@ -27,15 +27,15 @@ fragment Species on Species {
       stage
     }
   }
-  characterSpecies {
-    ... on Character {
+  universe {
+    ... on Universe {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
   }
-  universe {
-    ... on Universe {
+  characterSpecies {
+    ... on Character {
       remoteTypeName: __typename
       remoteId: id
       stage

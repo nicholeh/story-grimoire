@@ -4,8 +4,8 @@ fragment Organization on Organization {
   createdAt
   updatedAt
   publishedAt
-  organizationName
-  organizationDescription
+  name
+  description
   createdBy {
     ... on User {
       remoteTypeName: __typename
@@ -27,15 +27,15 @@ fragment Organization on Organization {
       stage
     }
   }
-  characterOrganization {
-    ... on Character {
+  universe {
+    ... on Universe {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
   }
-  universe {
-    ... on Universe {
+  characterOrganization {
+    ... on Character {
       remoteTypeName: __typename
       remoteId: id
       stage

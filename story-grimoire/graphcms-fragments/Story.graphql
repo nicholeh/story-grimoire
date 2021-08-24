@@ -11,6 +11,14 @@ fragment Story on Story {
   currentWordCount
   storySetting
   storyVibe
+  ideaDump {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
   createdBy {
     ... on User {
       remoteTypeName: __typename
