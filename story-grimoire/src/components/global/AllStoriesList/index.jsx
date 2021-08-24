@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { workStatus } from '../../../helpers/enums'
-import StoryTile from '../../structure/StoryTile'
+import StoryTile from '../../global/StoryTile'
 
 const AllStoriesList = ({ stories }) => (
     <div>

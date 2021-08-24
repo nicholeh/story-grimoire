@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
-import * as React from 'react'
+import React from 'react'
+import AllCharactersList from '../../components/global/AllCharactersList'
 import AllStoriesList from '../../components/global/AllStoriesList'
 import Seo from '../../components/seo'
 import Layout from '../../components/structure/Layout'
@@ -18,9 +19,10 @@ const UniverseSingle = ({ data, location }) => {
                 description={universe.description}
             />
 
-            <Section>
-                <div className="container mx-auto">
+            <Section className="py-24">
+                <div className="container mx-auto grid grid-cols-1 md:grid-cols-2">
                     <AllStoriesList stories={universe.stories} />
+                    <AllCharactersList characters={universe.characters} />
                 </div>
             </Section>
         </Layout>
@@ -41,6 +43,14 @@ export const query = graphql`
                     wordCountGoal
                     storyVersion
                     workStatus
+                }
+                characters {
+                    name
+                    genderPronouns
+                    pageSlug
+                    speciess {
+                        speciesName
+                    }
                 }
             }
         }
