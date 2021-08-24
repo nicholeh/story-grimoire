@@ -5,7 +5,7 @@ import UniverseNav from './UniverseNav'
 
 const Header = ({ className, currentPath }) => (
     <header
-        className={`fixed w-full flex justify-between items-center bg-white py-4 px-4 sm:px-8 shadow-md ${
+        className={`fixed z-50 w-full flex justify-between items-center bg-white py-4 px-4 sm:px-8 shadow-md ${
             className ? className : ''
         }`}
     >
