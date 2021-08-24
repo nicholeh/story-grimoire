@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Section from '../Section'
 import PropTypes from 'prop-types'
 import helpers from '../../../helpers'

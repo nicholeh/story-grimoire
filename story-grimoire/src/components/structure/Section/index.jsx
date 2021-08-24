@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Section = ({ children, className, ...props }) => (
-    <div className={`px-8 ${className ? className : ''}`} {...props}>
+    <section className={`px-8 ${className ? className : ''}`} {...props}>
         {children}
-    </div>
+    </section>
 )
 
 export default Section
