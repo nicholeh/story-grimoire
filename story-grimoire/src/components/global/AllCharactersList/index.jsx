@@ -10,7 +10,7 @@ const AllCharactersList = ({ characters }) => (
                 key={character.pageSlug}
                 name={character.name}
                 pageSlug={character.pageSlug}
-                genderPronouns={character.genderPronouns}
+                pronouns={character.pronouns}
                 speciess={character.speciess}
             />
         ))}
@@ -21,10 +21,10 @@ AllCharactersList.propTypes = {
     characters: PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string.isRequired,
-            genderPronouns: PropTypes.string,
+            pronouns: PropTypes.string,
             speciess: PropTypes.arrayOf(
                 PropTypes.shape({
-                    speciesName: PropTypes.string,
+                    name: PropTypes.string,
                 })
             ),
             pageSlug: PropTypes.string.isRequired,

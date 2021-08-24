@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import pagePaths from '../../../helpers/pagePaths'
 
-const CharacterTile = ({ pageSlug, name, genderPronouns, speciess }) => (
+const CharacterTile = ({ pageSlug, name, pronouns, speciess }) => (
     <div className="flex py-2">
         <div className="">
             <h3 className="sg-title-3">
@@ -15,11 +15,9 @@ const CharacterTile = ({ pageSlug, name, genderPronouns, speciess }) => (
                 </Link>
             </h3>
             <p className="sg-body-2">
-                {genderPronouns && genderPronouns} |{' '}
-                {speciess.map((specie, index) => (
-                    <span key={`${index}-${specie.speciesName}`}>
-                        {specie.speciesName}
-                    </span>
+                {pronouns && pronouns} |{' '}
+                {speciess.map((species, index) => (
+                    <span key={`${index}-${species.name}`}>{species.name}</span>
                 ))}
             </p>
         </div>
@@ -28,10 +26,10 @@ const CharacterTile = ({ pageSlug, name, genderPronouns, speciess }) => (
 
 CharacterTile.propTypes = {
     name: PropTypes.string.isRequired,
-    genderPronouns: PropTypes.string,
+    pronouns: PropTypes.string,
     speciess: PropTypes.arrayOf(
         PropTypes.shape({
-            speciesName: PropTypes.string,
+            name: PropTypes.string,
         })
     ),
     pageSlug: PropTypes.string.isRequired,

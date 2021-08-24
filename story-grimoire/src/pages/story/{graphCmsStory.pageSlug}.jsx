@@ -53,10 +53,10 @@ export const query = graphql`
                 }
                 characters {
                     name
-                    genderPronouns
+                    pronouns
                     pageSlug
                     speciess {
-                        speciesName
+                        name
                     }
                 }
             }
