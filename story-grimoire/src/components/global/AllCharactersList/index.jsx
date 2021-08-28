@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import CharacterTile from '../../global/CharacterTile'
 
-const AllCharactersList = ({ characters }) => (
-    <div>
+const AllCharactersList = ({ characters, ...props }) => (
+    <div {...props}>
         <h2 className="sg-title-1 md:sg-display-3 pb-8">All Characters</h2>
         {characters.map(character => (
             <CharacterTile

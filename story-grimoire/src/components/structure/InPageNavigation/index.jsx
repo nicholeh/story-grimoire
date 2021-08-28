@@ -11,23 +11,25 @@ const InPageNavigation = ({ links, className, ...props }) => (
     >
         <div className="sticky top-0 pt-48">
             <nav>
-                <ul className="text-gray-400">
-                    {Object.values(links).map(link => (
-                        <li key={link.id} className="mb-5">
-                            <Link
-                                activeClass="text-gray-900"
-                                to={link.id}
-                                spy={true}
-                                smooth={true}
-                                offset={-80}
-                                duration={500}
-                                className="sg-body-1 font-medium cursor-pointer hover:text-gray-700 hover:underline"
-                            >
-                                {link.heading}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                {links && (
+                    <ul className="text-gray-400">
+                        {Object.values(links).map(link => (
+                            <li key={link.id} className="mb-5">
+                                <Link
+                                    activeClass="text-gray-900"
+                                    to={link.id}
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-80}
+                                    duration={500}
+                                    className="sg-body-1 font-medium cursor-pointer hover:text-gray-700 hover:underline"
+                                >
+                                    {link.heading}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </nav>
         </div>
     </div>

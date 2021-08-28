@@ -2,7 +2,7 @@ import React from 'react'
 import Section from '../Section'
 import PropTypes from 'prop-types'
 import helpers from '../../../helpers'
-import UniverseBreadcrumb from '../UniverseBreadcrumb'
+import UniverseBreadcrumb from '../../global/UniverseBreadcrumb'
 import pagePaths from '../../../helpers/pagePaths'
 
 const SubPageTitle = ({

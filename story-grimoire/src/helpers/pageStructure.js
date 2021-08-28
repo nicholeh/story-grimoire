@@ -24,3 +24,14 @@ export const characterPage = {
         id: 'story-arcs',
     },
 }
+
+export const universePage = {
+    stories: {
+        heading: 'Stories',
+        id: 'stories',
+    },
+    characters: {
+        heading: 'Characters',
+        id: 'characters',
+    },
+}

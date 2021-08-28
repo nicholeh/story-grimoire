@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NoContent from '../NoContent'
+import NoContent from '../../global/NoContent'
 
 const InPageSection = ({
     id,

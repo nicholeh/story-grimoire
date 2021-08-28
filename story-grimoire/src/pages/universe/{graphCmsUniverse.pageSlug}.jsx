@@ -6,6 +6,8 @@ import Seo from '../../components/seo'
 import Layout from '../../components/structure/Layout'
 import PageTitle from '../../components/structure/PageTitle'
 import Section from '../../components/structure/Section'
+import SinglePageWithInnerNav from '../../components/view/SinglePageWithInnerNav'
+import { universePage } from '../../helpers/pageStructure'
 
 const UniverseSingle = ({ data, location }) => {
     const universe = data.allGraphCmsUniverse.nodes[0]
@@ -13,18 +15,27 @@ const UniverseSingle = ({ data, location }) => {
     return (
         <Layout currentPath={location.pathname}>
             <Seo title={`Universe | ${universe.name}`} />
-            <PageTitle
-                title={universe.name}
-                updatedAt={universe.updatedAt}
-                description={universe.description}
-            />
 
-            <Section className="py-24">
-                <div className="container mx-auto grid grid-cols-1 md:grid-cols-2">
-                    <AllStoriesList stories={universe.stories} />
-                    <AllCharactersList characters={universe.characters} />
-                </div>
-            </Section>
+            <SinglePageWithInnerNav navLinks={universePage}>
+                <PageTitle
+                    title={universe.name}
+                    updatedAt={universe.updatedAt}
+                    description={universe.description}
+                />
+
+                <Section className="py-24">
+                    <div>
+                        <AllStoriesList
+                            stories={universe.stories}
+                            name={universePage.stories.id}
+                        />
+                        <AllCharactersList
+                            characters={universe.characters}
+                            name={universePage.characters.id}
+                        />
+                    </div>
+                </Section>
+            </SinglePageWithInnerNav>
         </Layout>
     )
 }
