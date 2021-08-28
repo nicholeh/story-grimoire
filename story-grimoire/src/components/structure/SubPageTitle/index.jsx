@@ -21,7 +21,10 @@ const SubPageTitle = ({
                     className="mb-14"
                 />
 
-                <h1 className="sg-display-3 md:sg-display-2 lg:sg-display-1 mb-2">
+                <h1
+                    className="sg-display-3 md:sg-display-2 lg:sg-display-1 mb-2"
+                    name="details"
+                >
                     {title}
                 </h1>
                 {updatedAt && (

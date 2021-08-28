@@ -4,10 +4,13 @@ import CharacterCard from '../../components/global/CharacterCard'
 import Seo from '../../components/seo'
 import Grid from '../../components/structure/Grid'
 import InPageNavigation from '../../components/structure/InPageNavigation'
+import InPageSection from '../../components/structure/InPageSection'
+import SubContent from '../../components/structure/InPageSection/subContent'
 import Layout from '../../components/structure/Layout'
 import Section from '../../components/structure/Section'
 import SubPageTitle from '../../components/structure/SubPageTitle'
 import pagePath from '../../helpers/pagePaths'
+import { characterPage } from '../../helpers/pageStructure'
 
 const CharacterSingle = ({ data }) => {
     const character = data.allGraphCmsCharacter.nodes[0]
@@ -18,11 +21,11 @@ const CharacterSingle = ({ data }) => {
         <Layout currentPath={pagePath.universe(universe.pageSlug)}>
             <Seo title={`Character | ${character.name}`} />
 
-            <Grid className="lg:grid-cols-5">
-                <InPageNavigation className="col-span-1" />
-
-                {/* Add in side navigation that links to each of the headings */}
-                {/* Will need to factor in whether or not the heading is there */}
+            <Grid className="lg:grid-cols-5 lg:gap-10">
+                <InPageNavigation
+                    className="col-span-1"
+                    links={characterPage}
+                />
 
                 <div className="col-span-1 lg:col-span-4">
                     <SubPageTitle
@@ -35,6 +38,7 @@ const CharacterSingle = ({ data }) => {
                             <Grid className="lg:grid-cols-5 xl:grid-cols-3 lg:gap-x-32 xl:gap-x-40">
                                 <div className="lg:col-span-2 xl:col-span-1 lg:order-2">
                                     <CharacterCard
+                                        name={character.name}
                                         className="mx-auto"
                                         profilePhoto={character.profileImage}
                                         age={character.age}
@@ -45,60 +49,61 @@ const CharacterSingle = ({ data }) => {
                                         occupation={character.occupation}
                                     />
                                 </div>
-                                {/* Add html styling to graphcms content */}
-                                {/* Add conditional rendering if content is missing */}
-                                {/* Sanitize the data somehow? */}
+
                                 <section className="lg:col-span-3 xl:col-span-2 lg:order-1 lg:pt-2 mt-14 lg:mt-0">
                                     <p className="sg-body-0 mb-8">
                                         {character.description}
                                     </p>
-                                    <div className="py-10">
-                                        <h2 className="sg-title-1 mb-8">
-                                            Background History
-                                        </h2>
-                                        {character.backgroundHistory.map(
-                                            (history, index) => (
-                                                <div
-                                                    key={index}
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: history.html,
-                                                    }}
-                                                    className="mt-8"
-                                                />
-                                            )
-                                        )}
-                                    </div>
-                                    <div className="py-10">
-                                        <h2 className="sg-title-1">
-                                            Personality
-                                        </h2>
-                                        <div
-                                            dangerouslySetInnerHTML={{
-                                                __html: character.personality
-                                                    .html,
-                                            }}
-                                            className="mt-8"
+
+                                    {/* Physical Characteristics */}
+                                    <InPageSection
+                                        id={characterPage.physical.id}
+                                        heading={characterPage.physical.heading}
+                                    />
+
+                                    {/* Background History */}
+                                    <InPageSection
+                                        id={characterPage.background.id}
+                                        heading={
+                                            characterPage.background.heading
+                                        }
+                                        content={character.backgroundHistory}
+                                    />
+
+                                    {/* Personality */}
+                                    <InPageSection
+                                        id={characterPage.personality.id}
+                                        heading={
+                                            characterPage.personality.heading
+                                        }
+                                        content={character.personality}
+                                    >
+                                        <SubContent
+                                            heading="Knowledge"
+                                            content={character.knowledge}
                                         />
-                                        <h3 className="sg-title-2 mt-8">
-                                            Knowledge
-                                        </h3>
-                                        <div
-                                            dangerouslySetInnerHTML={{
-                                                __html: character.knowledge
-                                                    .html,
-                                            }}
-                                            className="mt-4"
+
+                                        <SubContent
+                                            heading="Wound"
+                                            content={character.wound}
                                         />
-                                        <h3 className="sg-title-2 mt-8">
-                                            Wound
-                                        </h3>
-                                        <div
-                                            dangerouslySetInnerHTML={{
-                                                __html: character.wound.html,
-                                            }}
-                                            className="mt-4"
-                                        />
-                                    </div>
+                                    </InPageSection>
+
+                                    {/* Relationships */}
+                                    <InPageSection
+                                        id={characterPage.relationships.id}
+                                        heading={
+                                            characterPage.relationships.heading
+                                        }
+                                    />
+
+                                    {/* Story Arcs */}
+                                    <InPageSection
+                                        id={characterPage.storyArcs.id}
+                                        heading={
+                                            characterPage.storyArcs.heading
+                                        }
+                                    />
                                 </section>
                             </Grid>
                         </div>
