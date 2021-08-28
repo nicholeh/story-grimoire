@@ -21,6 +21,7 @@ const multiValue = (label, values) => (
 
 const CharacterCard = ({
     profilePhoto,
+    name,
     age,
     birthdate,
     pronouns,
@@ -42,6 +43,7 @@ const CharacterCard = ({
                 {profilePhoto && (
                     <GatsbyImage
                         image={profileImg}
+                        alt={name}
                         className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none lg:rounded-t-xl lg:rounded-bl-none"
                     />
                 )}
@@ -60,8 +62,9 @@ const CharacterCard = ({
 }
 
 CharacterCard.propTypes = {
+    name: PropTypes.string,
     profilePhoto: PropTypes.shape({}),
-    age: PropTypes.string,
+    age: PropTypes.number,
     birthdate: PropTypes.string,
     pronouns: PropTypes.string,
     occupation: PropTypes.string,
