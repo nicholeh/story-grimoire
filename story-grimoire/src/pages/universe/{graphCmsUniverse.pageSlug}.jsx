@@ -1,10 +1,13 @@
 import { graphql } from 'gatsby'
-import * as React from 'react'
+import React from 'react'
+import AllCharactersList from '../../components/global/AllCharactersList'
 import AllStoriesList from '../../components/global/AllStoriesList'
 import Seo from '../../components/seo'
 import Layout from '../../components/structure/Layout'
 import PageTitle from '../../components/structure/PageTitle'
 import Section from '../../components/structure/Section'
+import SinglePageWithInnerNav from '../../components/view/SinglePageWithInnerNav'
+import { universePage } from '../../helpers/pageStructure'
 
 const UniverseSingle = ({ data, location }) => {
     const universe = data.allGraphCmsUniverse.nodes[0]
@@ -12,17 +15,27 @@ const UniverseSingle = ({ data, location }) => {
     return (
         <Layout currentPath={location.pathname}>
             <Seo title={`Universe | ${universe.name}`} />
-            <PageTitle
-                title={universe.name}
-                updatedAt={universe.updatedAt}
-                description={universe.description}
-            />
 
-            <Section>
-                <div className="container mx-auto">
-                    <AllStoriesList stories={universe.stories} />
-                </div>
-            </Section>
+            <SinglePageWithInnerNav navLinks={universePage}>
+                <PageTitle
+                    title={universe.name}
+                    updatedAt={universe.updatedAt}
+                    description={universe.description}
+                />
+
+                <Section className="py-24">
+                    <div>
+                        <AllStoriesList
+                            stories={universe.stories}
+                            name={universePage.stories.id}
+                        />
+                        <AllCharactersList
+                            characters={universe.characters}
+                            name={universePage.characters.id}
+                        />
+                    </div>
+                </Section>
+            </SinglePageWithInnerNav>
         </Layout>
     )
 }
@@ -41,6 +54,14 @@ export const query = graphql`
                     wordCountGoal
                     storyVersion
                     workStatus
+                }
+                characters {
+                    name
+                    pronouns
+                    pageSlug
+                    speciess {
+                        name
+                    }
                 }
             }
         }

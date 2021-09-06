@@ -35,18 +35,22 @@ fragment Universe on Universe {
       stage
     }
   }
-  universeCategories {
+  characters {
     ... on Character {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
-    ... on Organization {
+  }
+  speciess {
+    ... on Species {
       remoteTypeName: __typename
       remoteId: id
       stage
     }
-    ... on Species {
+  }
+  organizations {
+    ... on Organization {
       remoteTypeName: __typename
       remoteId: id
       stage

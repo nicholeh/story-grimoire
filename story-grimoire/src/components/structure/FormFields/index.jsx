@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 const labelClasses = 'block text-500 font-mono text-sm pl-1 pb-2'
 const inputClasses =

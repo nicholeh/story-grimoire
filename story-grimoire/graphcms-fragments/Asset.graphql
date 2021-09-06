@@ -32,5 +32,12 @@ fragment Asset on Asset {
       stage
     }
   }
+  profileImageCharacter {
+    ... on Character {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   url
 }

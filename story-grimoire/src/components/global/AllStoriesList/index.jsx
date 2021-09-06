@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { workStatus } from '../../../helpers/enums'
-import StoryTile from '../../structure/StoryTile'
+import StoryTile from '../../global/StoryTile'
 
-const AllStoriesList = ({ stories }) => (
-    <div>
+const AllStoriesList = ({ stories, ...props }) => (
+    <div {...props}>
         <h2 className="sg-title-1 md:sg-display-3 pb-8">All Stories</h2>
         {workStatus.map(status => {
             const storiesByStatus = stories.filter(
