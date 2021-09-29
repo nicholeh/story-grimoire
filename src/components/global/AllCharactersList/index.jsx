@@ -7,11 +7,11 @@ const AllCharactersList = ({ characters, ...props }) => (
         <h2 className="sg-title-1 md:sg-display-3 pb-8">All Characters</h2>
         {characters.map(character => (
             <CharacterTile
-                key={character.pageSlug}
+                key={character.slug.current}
                 name={character.name}
-                pageSlug={character.pageSlug}
+                pageSlug={character.slug}
                 pronouns={character.pronouns}
-                speciess={character.speciess}
+                species={character.species}
             />
         ))}
     </div>
@@ -22,12 +22,10 @@ AllCharactersList.propTypes = {
         PropTypes.shape({
             name: PropTypes.string.isRequired,
             pronouns: PropTypes.string,
-            speciess: PropTypes.arrayOf(
-                PropTypes.shape({
-                    name: PropTypes.string,
-                })
-            ),
-            pageSlug: PropTypes.string.isRequired,
+            species: PropTypes.shape({
+                name: PropTypes.string,
+            }),
+            slug: PropTypes.shape({ current: PropTypes.string.isRequired }),
         })
     ),
 }

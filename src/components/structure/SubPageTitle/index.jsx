@@ -17,7 +17,7 @@ const SubPageTitle = ({
             <div className="container m-auto">
                 <UniverseBreadcrumb
                     name={parentUniverse.name}
-                    link={pagePaths.universe(parentUniverse.pageSlug)}
+                    link={pagePaths.universe(parentUniverse.slug.current)}
                     className="mb-14"
                 />
 
@@ -56,7 +56,7 @@ SubPageTitle.propTypes = {
     metadata: PropTypes.string,
     parentUniverse: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        pageSlug: PropTypes.string.isRequired,
+        slug: PropTypes.shape({ current: PropTypes.string.isRequired }),
     }),
 }
 

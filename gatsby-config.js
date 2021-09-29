@@ -11,10 +11,11 @@ module.exports = {
     plugins: [
         `gatsby-plugin-react-helmet`,
         {
-            resolve: 'gatsby-source-graphcms',
+            resolve: 'gatsby-source-sanity',
             options: {
-                endpoint: process.env.GRAPHCMS_ENDPOINT,
-                stages: ['PUBLISHED'],
+                projectId: process.env.SANITY_PROJECT_ID,
+                dataset: process.env.SANITY_DATASET,
+                token: process.env.SANITY_TOKEN,
             },
         },
         `gatsby-plugin-image`,

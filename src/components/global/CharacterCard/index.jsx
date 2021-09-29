@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Grid from '../../structure/Grid'
@@ -11,11 +11,13 @@ const singleValue = (label, value) => (
 
 const multiValue = (label, values) => (
     <p>
+        {console.log(values)}
         <span className="font-semibold">{label}:</span>{' '}
-        {values.map(
-            (value, index) =>
-                `${value.name}${index + 1 !== values.length ? ', ' : ''}`
-        )}
+        {values.map((value, index) => (
+            <Fragment key={value._id}>
+                {`${value.name}${index + 1 !== values.length ? ', ' : ''}`}
+            </Fragment>
+        ))}
     </p>
 )
 
@@ -52,7 +54,7 @@ const CharacterCard = ({
                     {birthdate && singleValue('Birthdate', birthdate)}
                     {pronouns && singleValue('Pronouns', pronouns)}
                     {species && multiValue('Species', species)}
-                    {organizations.length > 0 &&
+                    {organizations &&
                         multiValue('Organizations', organizations)}
                     {occupation && singleValue('Occupation', occupation)}
                 </div>
@@ -70,11 +72,13 @@ CharacterCard.propTypes = {
     occupation: PropTypes.string,
     species: PropTypes.arrayOf(
         PropTypes.shape({
+            _id: PropTypes.string,
             name: PropTypes.string,
         })
     ),
     organizations: PropTypes.arrayOf(
         PropTypes.shape({
+            _id: PropTypes.string,
             name: PropTypes.string,
         })
     ),

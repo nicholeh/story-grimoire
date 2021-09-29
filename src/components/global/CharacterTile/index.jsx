@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import pagePaths from '../../../helpers/pagePaths'
 
-const CharacterTile = ({ pageSlug, name, pronouns, speciess }) => (
+const CharacterTile = ({ pageSlug, name, pronouns, species }) => (
     <div className="flex py-2">
         <div className="">
             <h3 className="sg-title-3">
                 <Link
-                    to={pagePaths.character(pageSlug)}
+                    to={pagePaths.character(pageSlug.current)}
                     className="hover:underline"
                 >
                     {name}
@@ -16,8 +16,11 @@ const CharacterTile = ({ pageSlug, name, pronouns, speciess }) => (
             </h3>
             <p className="sg-body-2">
                 {pronouns && pronouns} |{' '}
-                {speciess.map((species, index) => (
-                    <span key={`${index}-${species.name}`}>{species.name}</span>
+                {species.map((specie, index) => (
+                    <span key={specie._id}>
+                        {specie.name}
+                        {index + 1 !== species.length ? ', ' : ''}
+                    </span>
                 ))}
             </p>
         </div>
@@ -27,12 +30,11 @@ const CharacterTile = ({ pageSlug, name, pronouns, speciess }) => (
 CharacterTile.propTypes = {
     name: PropTypes.string.isRequired,
     pronouns: PropTypes.string,
-    speciess: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string,
-        })
-    ),
-    pageSlug: PropTypes.string.isRequired,
+    species: PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+    }),
+    pageSlug: PropTypes.shape({ current: PropTypes.string.isRequired }),
 }
 
 export default CharacterTile

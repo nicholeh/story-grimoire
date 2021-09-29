@@ -4,7 +4,7 @@ import CharacterCard from '../../components/global/CharacterCard'
 import Seo from '../../components/seo'
 import Grid from '../../components/structure/Grid'
 import InPageSection from '../../components/structure/InPageSection'
-import SubContent from '../../components/structure/InPageSection/subContent'
+import SubContent from '../../components/structure/InPageSection/SubContent'
 import Layout from '../../components/structure/Layout'
 import Section from '../../components/structure/Section'
 import SubPageTitle from '../../components/structure/SubPageTitle'
@@ -13,18 +13,18 @@ import pagePath from '../../helpers/pagePaths'
 import { characterPage } from '../../helpers/pageStructure'
 
 const CharacterSingle = ({ data }) => {
-    const character = data.allGraphCmsCharacter.nodes[0]
+    const character = data.allSanityCharacter.nodes[0]
 
     const { universe } = character
 
     return (
-        <Layout currentPath={pagePath.universe(universe.pageSlug)}>
+        <Layout currentPath={pagePath.universe(universe.slug.current)}>
             <Seo title={`Character | ${character.name}`} />
 
             <SinglePageWithInnerNav navLinks={characterPage}>
                 <SubPageTitle
                     title={character.name}
-                    updatedAt={character.updatedAt}
+                    updatedAt={character._updatedAt}
                     parentUniverse={universe}
                 />
                 <Section className="md:mt-4">
@@ -34,12 +34,22 @@ const CharacterSingle = ({ data }) => {
                                 <CharacterCard
                                     name={character.name}
                                     className="mx-auto"
-                                    profilePhoto={character.profileImage}
+                                    profilePhoto={
+                                        character.profileImage &&
+                                        character.profileImage.asset &&
+                                        character.profileImage.asset
+                                    }
                                     age={character.age}
                                     birthdate={character.birthdate}
                                     pronouns={character.pronouns}
-                                    species={character.speciess}
-                                    organizations={character.organizations}
+                                    species={
+                                        character.species.length > 0 &&
+                                        character.species
+                                    }
+                                    organizations={
+                                        character.organization.length > 0 &&
+                                        character.organization
+                                    }
                                     occupation={character.occupation}
                                 />
                             </div>
@@ -59,23 +69,31 @@ const CharacterSingle = ({ data }) => {
                                 <InPageSection
                                     id={characterPage.background.id}
                                     heading={characterPage.background.heading}
-                                    content={character.backgroundHistory}
+                                    content={character.background}
                                 />
 
                                 {/* Personality */}
                                 <InPageSection
                                     id={characterPage.personality.id}
                                     heading={characterPage.personality.heading}
-                                    content={character.personality}
+                                    content={
+                                        character.personality &&
+                                        character.personality.description
+                                    }
                                 >
                                     <SubContent
                                         heading="Knowledge"
-                                        content={character.knowledge}
+                                        content={
+                                            character.personality &&
+                                            character.personality.knowledge
+                                        }
                                     />
-
                                     <SubContent
                                         heading="Wound"
-                                        content={character.wound}
+                                        content={
+                                            character.personality &&
+                                            character.personality.wound
+                                        }
                                     />
                                 </InPageSection>
 
@@ -102,40 +120,72 @@ const CharacterSingle = ({ data }) => {
 }
 
 export const query = graphql`
-    query CharacterSingle($pageSlug: String!) {
-        allGraphCmsCharacter(filter: { pageSlug: { eq: $pageSlug } }) {
+    query CharacterSingle($slug__current: String!) {
+        allSanityCharacter(
+            filter: { slug: { current: { eq: $slug__current } } }
+        ) {
             nodes {
-                updatedAt
+                _updatedAt
                 name
-                pageSlug
+                slug {
+                    current
+                }
                 profileImage {
-                    gatsbyImageData(layout: FULL_WIDTH)
+                    asset {
+                        gatsbyImageData(layout: FULL_WIDTH)
+                    }
                 }
                 description
                 pronouns
                 age
-                speciess {
+                species {
+                    _id
                     name
                 }
-                organizations {
+                organization {
+                    _id
                     name
                 }
                 occupation
-                backgroundHistory {
-                    html
+                background {
+                    _key
+                    title
+                    date
+                    content {
+                        children {
+                            _key
+                            text
+                        }
+                    }
                 }
                 personality {
-                    html
-                }
-                knowledge {
-                    html
-                }
-                wound {
-                    html
+                    description {
+                        _key
+                        children {
+                            _key
+                            text
+                        }
+                    }
+                    knowledge {
+                        _key
+                        children {
+                            _key
+                            text
+                        }
+                    }
+                    wound {
+                        _key
+                        children {
+                            _key
+                            text
+                        }
+                    }
                 }
                 universe {
                     name
-                    pageSlug
+                    slug {
+                        current
+                    }
                 }
             }
         }

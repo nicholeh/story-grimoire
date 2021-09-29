@@ -7,13 +7,13 @@ import Layout from '../components/structure/Layout'
 import Section from '../components/structure/Section'
 
 const IndexPage = ({ data }) => {
-    const { nodes } = data.allGraphCmsStory
+    const { nodes } = data.allSanityStory
     return (
         <Layout>
             <Seo title="Home" />
             <Section>
                 <Grid className="p-8 space-y-8 md:space-y-0 md:space-x-12 h-full overflow-auto">
-                    <AllStoriesList stories={nodes} />
+                    <AllStoriesList story={nodes} />
                 </Grid>
             </Section>
         </Layout>
@@ -22,14 +22,16 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
     query AllStories {
-        allGraphCmsStory {
+        allSanityStory {
             nodes {
-                pageSlug
-                title
-                typeOfStory
-                wordCountGoal
-                storyVersion
-                workStatus
+                name
+                slug {
+                    current
+                }
+                type
+                wcGoal
+                version
+                status
             }
         }
     }

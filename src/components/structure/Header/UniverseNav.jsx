@@ -5,16 +5,18 @@ import pagePath from '../../../helpers/pagePaths'
 const UniverseNav = ({ currentPath }) => {
     const data = useStaticQuery(graphql`
         query UniverseNavigation {
-            allGraphCmsUniverse {
+            allSanityUniverse {
                 nodes {
                     name
-                    pageSlug
+                    slug {
+                        current
+                    }
                 }
             }
         }
     `)
 
-    const { nodes } = data.allGraphCmsUniverse
+    const { nodes } = data.allSanityUniverse
 
     const [navValue, setNavValue] = useState(currentPath || '')
 
@@ -38,8 +40,8 @@ const UniverseNav = ({ currentPath }) => {
                     </option>
                     {menuItems.map(universe => (
                         <option
-                            key={universe.pageSlug}
-                            value={pagePath.universe(universe.pageSlug)}
+                            key={universe.slug.current}
+                            value={pagePath.universe(universe.slug.current)}
                         >
                             {universe.name}
                         </option>

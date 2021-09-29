@@ -1,7 +1,7 @@
 export const workStatus = [
-    'Active',
-    'Paused',
-    'Percolating',
-    'Idea',
-    'Abandoned',
+    'active',
+    'paused',
+    'percolating',
+    'idea',
+    'abandoned',
 ]

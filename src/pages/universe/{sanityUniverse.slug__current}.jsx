@@ -10,7 +10,8 @@ import SinglePageWithInnerNav from '../../components/view/SinglePageWithInnerNav
 import { universePage } from '../../helpers/pageStructure'
 
 const UniverseSingle = ({ data, location }) => {
-    const universe = data.allGraphCmsUniverse.nodes[0]
+    const universe = data.allSanityUniverse.nodes[0]
+    const characters = data.allSanityCharacter.nodes
 
     return (
         <Layout currentPath={location.pathname}>
@@ -19,18 +20,18 @@ const UniverseSingle = ({ data, location }) => {
             <SinglePageWithInnerNav navLinks={universePage}>
                 <PageTitle
                     title={universe.name}
-                    updatedAt={universe.updatedAt}
+                    updatedAt={universe._updatedAt}
                     description={universe.description}
                 />
 
                 <Section className="py-24">
                     <div>
                         <AllStoriesList
-                            stories={universe.stories}
+                            story={universe.story}
                             name={universePage.stories.id}
                         />
                         <AllCharactersList
-                            characters={universe.characters}
+                            characters={characters}
                             name={universePage.characters.id}
                         />
                     </div>
@@ -41,27 +42,38 @@ const UniverseSingle = ({ data, location }) => {
 }
 
 export const query = graphql`
-    query UniverseSingle($pageSlug: String!) {
-        allGraphCmsUniverse(filter: { pageSlug: { eq: $pageSlug } }) {
+    query UniverseSingle($slug__current: String!) {
+        allSanityUniverse(
+            filter: { slug: { current: { eq: $slug__current } } }
+        ) {
             nodes {
                 name
                 description
-                updatedAt
-                stories {
-                    pageSlug
-                    title
-                    typeOfStory
-                    wordCountGoal
-                    storyVersion
-                    workStatus
-                }
-                characters {
+                _updatedAt
+                story {
                     name
-                    pronouns
-                    pageSlug
-                    speciess {
-                        name
+                    slug {
+                        current
                     }
+                    type
+                    wcGoal
+                    version
+                    status
+                }
+            }
+        }
+        allSanityCharacter(
+            filter: { universe: { slug: { current: { eq: $slug__current } } } }
+        ) {
+            nodes {
+                name
+                pronouns
+                slug {
+                    current
+                }
+                species {
+                    _id
+                    name
                 }
             }
         }
