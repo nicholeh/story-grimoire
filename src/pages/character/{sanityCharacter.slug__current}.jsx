@@ -42,14 +42,8 @@ const CharacterSingle = ({ data }) => {
                                     age={character.age}
                                     birthdate={character.birthdate}
                                     pronouns={character.pronouns}
-                                    species={
-                                        character.species.length > 0 &&
-                                        character.species
-                                    }
-                                    organizations={
-                                        character.organization.length > 0 &&
-                                        character.organization
-                                    }
+                                    species={character.species}
+                                    organizations={character.organization}
                                     occupation={character.occupation}
                                 />
                             </div>

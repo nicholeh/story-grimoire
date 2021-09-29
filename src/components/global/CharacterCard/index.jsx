@@ -9,17 +9,17 @@ const singleValue = (label, value) => (
     </p>
 )
 
-const multiValue = (label, values) => (
-    <p>
-        {console.log(values)}
-        <span className="font-semibold">{label}:</span>{' '}
-        {values.map((value, index) => (
-            <Fragment key={value._id}>
-                {`${value.name}${index + 1 !== values.length ? ', ' : ''}`}
-            </Fragment>
-        ))}
-    </p>
-)
+const multiValue = (label, values) =>
+    values.length > 0 && (
+        <p>
+            <span className="font-semibold">{label}:</span>{' '}
+            {values.map((value, index) => (
+                <Fragment key={value._id}>
+                    {`${value.name}${index + 1 !== values.length ? ', ' : ''}`}
+                </Fragment>
+            ))}
+        </p>
+    )
 
 const CharacterCard = ({
     profilePhoto,

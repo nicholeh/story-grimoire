@@ -30,10 +30,12 @@ const CharacterTile = ({ pageSlug, name, pronouns, species }) => (
 CharacterTile.propTypes = {
     name: PropTypes.string.isRequired,
     pronouns: PropTypes.string,
-    species: PropTypes.shape({
-        _id: PropTypes.string,
-        name: PropTypes.string,
-    }),
+    species: PropTypes.arrayOf(
+        PropTypes.shape({
+            _id: PropTypes.string,
+            name: PropTypes.string,
+        })
+    ),
     pageSlug: PropTypes.shape({ current: PropTypes.string.isRequired }),
 }
 

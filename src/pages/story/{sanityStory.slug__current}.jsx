@@ -8,7 +8,6 @@ import Section from '../../components/structure/Section'
 import pagePath from '../../helpers/pagePaths'
 
 const StorySingle = ({ data }) => {
-    console.log(data)
     const story = data.allSanityStory.nodes[0]
 
     const { universe } = story

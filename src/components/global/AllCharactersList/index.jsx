@@ -22,9 +22,11 @@ AllCharactersList.propTypes = {
         PropTypes.shape({
             name: PropTypes.string.isRequired,
             pronouns: PropTypes.string,
-            species: PropTypes.shape({
-                name: PropTypes.string,
-            }),
+            species: PropTypes.arrayOf(
+                PropTypes.shape({
+                    name: PropTypes.string,
+                })
+            ),
             slug: PropTypes.shape({ current: PropTypes.string.isRequired }),
         })
     ),
